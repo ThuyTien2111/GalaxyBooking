@@ -8,12 +8,15 @@ import {
     Image,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Import thư viện FontAwesome hoặc thư viện icon khác
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 
-const LogIn = ({ navigation }) => {
+// const LogIn = ({ navigation, route}) => {
+    const LogIn = ({ navigation}) => {
+
     var [email, setEmail] = useState('');
     var [password, setPassword] = useState('');
-
+    var user={};
 
     var handleEmailError = () => {
         return email.trim() === '' ? true : false;
@@ -26,22 +29,23 @@ const LogIn = ({ navigation }) => {
     const fakeUsers = [
         { email: 'user1@gmail.com', password: '12345' },
         { email: 'user2@gmail.com', password: '12345' },
+        { email: 'tien', password: '123' },
         // Thêm nhiều người dùng khác ở đây
     ];
+    // const { users } = route.params;
     const handleLogin = () => {
-        if (email.trim() === '' || password.trim() === '') {
-            setEmailError(email.trim() === '');
-            setPasswordError(password.trim() === '');
-            return;
-        }
-        // Xử lý đăng nhập ở đây
         // Xác thực thông tin đăng nhập
-        const user = fakeUsers.find(user => user.email === email && user.password === password);
+        user = fakeUsers.find((user) => user.email === email && user.password === password);
         if (user) {
+            console.log(user);
             alert('Đăng nhập thành công!');
+            navigation.navigate('Account');
+
+            // navigation.navigate('Account', {u:user});
         } else {
             alert('Đăng nhập thất bại. Vui lòng kiểm tra thông tin đăng nhập.');
         }
+    
     };
 
     return (
@@ -71,7 +75,9 @@ const LogIn = ({ navigation }) => {
                 />
             </View>
             {handlePassError() && <Text style={styles.errorText}>Không được để trống thông tin này</Text>}
+                <TouchableOpacity style={styles.forgotPass}>
                 <Text style={styles.forgotPasswordText}>Quên mật khẩu</Text>
+                </TouchableOpacity>
             <TouchableOpacity
                 style={[styles.button, (email.trim() === '' || password.trim() === '') && styles.buttonDisabled]}
                 onPress={handleLogin}
@@ -157,6 +163,8 @@ var styles = StyleSheet.create({
     forgotPasswordText: {
         marginTop: 10,
         color: 'blue',
+    },
+    forgotPass:{
         alignSelf: 'flex-end',
     },
     signupContainer: {

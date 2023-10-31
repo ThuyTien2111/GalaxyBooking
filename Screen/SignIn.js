@@ -10,8 +10,6 @@ import {
 } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 
-
-
 var SignIn = ({ navigation }) => {
     var [fullName, setFullName] = useState('');
     var [email, setEmail] = useState('');
@@ -19,6 +17,7 @@ var SignIn = ({ navigation }) => {
     var [gender, setGender] = useState('');
     var [password, setPassword] = useState('');
     var [confirmPassword, setConfirmPassword] = useState('');
+    var users = []; // Mảng để lưu thông tin sinh viên
 
     const options = [
         { label: 'Nam', value: 'Nam' },
@@ -62,16 +61,25 @@ var SignIn = ({ navigation }) => {
 
     }
 
-
     var handleRegister = () => {
         if (isFormValid()) {
-            // Xử lý đăng ký tài khoản ở đây
+            // Tạo một đối tượng sinh viên từ thông tin nhập
+            var user = {
+                fullName,
+                email,
+                phoneNumber,
+                gender,
+                password,
+            };
+            // Thêm sinh viên vào mảng studentList
+            users.push(user);
             alert('Đăng ký thành công!');
+            // navigation.navigate('LogIn', { users: users });
+            navigation.navigate('LogIn');
+
         } else {
             alert('Vui lòng điền đầy đủ thông tin.');
         }
-        navigation.navigate('LogIn');
-
     };
 
     return (
@@ -91,20 +99,6 @@ var SignIn = ({ navigation }) => {
 
             {handleNameError() && <Text style={styles.errorText}>Không được để trống thông tin này</Text>}
 
-            {/* Radio buttons for gender selection */}
-            {/* 
-            <View style={styles.genderContainer}>
-                <Text style={styles.inputLabel}>Giới tính: </Text>
-                <RadioGroup
-                    radioButtons={[
-                        { label: 'Nam', value: 'Nam', id: 'nam', labelStyle:styles.radioButtonLabel},
-                        { label: 'Nữ', value: 'Nữ', id: 'nu', labelStyle:styles.radioButtonLabel},
-                    ]}
-                    onPress={(radioButtons)=>setValue(value)}
-                    selectedId={gender}
-                    layout="row"
-                />
-            </View> */}
             <View style={styles.genderContainer}>
                 <Text style={styles.inputLabel}>Giới tính</Text>
                 <RadioForm
@@ -174,7 +168,7 @@ var SignIn = ({ navigation }) => {
             <Text style={styles.loginText}>Tài khoản đã được đăng ký?</Text>
             <TouchableOpacity
                 style={styles.loginButton}
-                onPress={() => navigation.navigate('Login')}
+                onPress={() => navigation.navigate('LogIn')}
             >
                 <Text style={styles.loginButtonText}
                     onPress={() => navigation.navigate('LogIn')} // Chuyển đến trang LogIn
