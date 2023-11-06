@@ -17,7 +17,12 @@ var SignIn = ({ navigation }) => {
     var [gender, setGender] = useState('');
     var [password, setPassword] = useState('');
     var [confirmPassword, setConfirmPassword] = useState('');
-    var users = []; // Mảng để lưu thông tin sinh viên
+    var users = [
+        {
+            email:"tien",
+            password:"123"
+        }
+    ]; // Mảng để lưu thông tin sinh viên
 
     const options = [
         { label: 'Nam', value: 'Nam' },
@@ -74,8 +79,8 @@ var SignIn = ({ navigation }) => {
             // Thêm sinh viên vào mảng studentList
             users.push(user);
             alert('Đăng ký thành công!');
-            // navigation.navigate('LogIn', { users: users });
-            navigation.navigate('LogIn');
+            navigation.navigate('LogIn', { users: users });
+            // navigation.navigate('LogIn');
 
         } else {
             alert('Vui lòng điền đầy đủ thông tin.');
@@ -168,10 +173,10 @@ var SignIn = ({ navigation }) => {
             <Text style={styles.loginText}>Tài khoản đã được đăng ký?</Text>
             <TouchableOpacity
                 style={styles.loginButton}
-                onPress={() => navigation.navigate('LogIn')}
+                onPress={() => navigation.navigate('LogIn',{users:users})}
             >
                 <Text style={styles.loginButtonText}
-                    onPress={() => navigation.navigate('LogIn')} // Chuyển đến trang LogIn
+                    // Chuyển đến trang LogIn
                 >Đăng nhập</Text>
             </TouchableOpacity>
         </ScrollView>

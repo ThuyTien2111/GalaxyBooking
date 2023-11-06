@@ -9,6 +9,33 @@ const moviesData = [
         image: require('./img/film1.webp'),
         rating: 8.4,
         genre: 'K',
+        showtime: [
+            {
+                dayofweek: "Hôm nay",
+                date: "06/11",
+                time: ["18:00", "19:15", "20:00", "22:00"]
+            },
+            {
+                dayofweek: "Thứ 3",
+                date: "07/11",
+                time: ["09:30", "10:45", "11:45", "13:45", "15:45", "18:00", "20:00", "22:00"]
+            },
+            {
+                dayofweek: "Thứ 4",
+                date: "08/11",
+                time: ["11:45", "13:45", "15:45", "18:00", "20:00"]
+            },
+            {
+                dayofweek: "Thứ 5",
+                date: "09/11",
+                time: ["11:45", "13:45", "16:00", "18:15"]
+            },
+            {
+                dayofweek: "Thứ 6",
+                date: "10/11",
+                time: ["16:30", "18:30"]
+            }
+        ]
     },
     {
         id: 2,
@@ -16,6 +43,28 @@ const moviesData = [
         image: require('./img/film2.webp'),
         rating: 9.1,
         genre: 'T18',
+        showtime: [
+            {
+                dayofweek: "Hôm nay",
+                date: "06/11",
+                time: ["18:00"]
+            },
+            {
+                dayofweek: "Thứ 3",
+                date: "07/11",
+                time: ["12:45"]
+            },
+            {
+                dayofweek: "Thứ 4",
+                date: "08/11",
+                time: ["09:15", "13:15"]
+            },
+            {
+                dayofweek: "Thứ 5",
+                date: "09/11",
+                time: ["13:00"]
+            }
+        ]
     },
     {
         id: 3,
@@ -23,6 +72,33 @@ const moviesData = [
         image: require('./img/film3.webp'),
         rating: 9.6,
         genre: 'T13',
+        showtime: [
+            {
+                dayofweek: "Hôm nay",
+                date: "06/11",
+                time: ["21:15"]
+            },
+            {
+                dayofweek: "Thứ 3",
+                date: "07/11",
+                time: ["12:45", "15:00", "21:15"]
+            },
+            {
+                dayofweek: "Thứ 4",
+                date: "08/11",
+                time: ["15:00"]
+            },
+            {
+                dayofweek: "Thứ 5",
+                date: "09/11",
+                time: ["11:00"]
+            },
+            {
+                dayofweek: "Thứ 6",
+                date: "10/11",
+                time: ["13:45"]
+            }
+        ]
     },
     {
         id: 4,
@@ -30,6 +106,33 @@ const moviesData = [
         image: require('./img/film4.webp'),
         rating: 4.5,
         genre: 'T18',
+        showtime: [
+            {
+                dayofweek: "Hôm nay",
+                date: "06/11",
+                time: ["21:15"]
+            },
+            {
+                dayofweek: "Thứ 3",
+                date: "07/11",
+                time: ["12:45", "15:00", "21:15"]
+            },
+            {
+                dayofweek: "Thứ 4",
+                date: "08/11",
+                time: ["15:00"]
+            },
+            {
+                dayofweek: "Thứ 5",
+                date: "09/11",
+                time: ["11:00"]
+            },
+            {
+                dayofweek: "Thứ 6",
+                date: "10/11",
+                time: ["13:45"]
+            }
+        ]
     },
     {
         id: 5,
@@ -37,6 +140,33 @@ const moviesData = [
         image: require('./img/film5.webp'),
         rating: 8.3,
         genre: 'T18',
+        showtime: [
+            {
+                dayofweek: "Hôm nay",
+                date: "06/11",
+                time: ["21:15"]
+            },
+            {
+                dayofweek: "Thứ 3",
+                date: "07/11",
+                time: ["12:45", "15:00", "21:15"]
+            },
+            {
+                dayofweek: "Thứ 4",
+                date: "08/11",
+                time: ["15:00"]
+            },
+            {
+                dayofweek: "Thứ 5",
+                date: "09/11",
+                time: ["11:00"]
+            },
+            {
+                dayofweek: "Thứ 6",
+                date: "10/11",
+                time: ["13:45"]
+            }
+        ]
     },
     {
         id: 6,
@@ -44,6 +174,36 @@ const moviesData = [
         image: require('./img/film6.webp'),
         rating: 8.3,
         genre: 'T18',
+        showtime: [
+            {
+                dayofweek: "Hôm nay",
+                date: "06/11",
+                time: ["18:15", "19:00", "19:45", "20:45", "21:30", "22:15"]
+            },
+            {
+                dayofweek: "Thứ 3",
+                date: "07/11",
+                time: ["09:45", "10:30", "11:30", "12:15", "13:00", "14:00", "14:45", "15:30",
+                        "16:30", "17:15", "18:15", "19:00", "19:45", "20:45", "21:30", "22:15"]
+            },
+            {
+                dayofweek: "Thứ 4",
+                date: "08/11",
+                time: ["10:30", "11:30", "12:15", "13:00", "14:00", "14:45", "15:30", "16:30",
+                        "17:15", "18:15", "19:00", "19:45", "20:45", "21:30", "22:15"]
+            },
+            {
+                dayofweek: "Thứ 5",
+                date: "09/11",
+                time: ["10:30", "11:30", "12:30", "13:15", "14:00", "15:00", "15:45", "16:30", 
+                        "17:30", "22:15"]
+            },
+            {
+                dayofweek: "Thứ 6",
+                date: "10/11",
+                time: ["09:45", "11:15", "12:15", "14:45", "17:15", "19:45", "22:15"]
+            }
+        ]
     },
     {
         id: 7,
@@ -51,6 +211,29 @@ const moviesData = [
         image: require('./img/film7.webp'),
         rating: 6.4,
         genre: 'T13',
+        showtime: [
+            {
+                dayofweek: "Hôm nay",
+                date: "06/11",
+                time: ["19:15"]
+            },
+            {
+                dayofweek: "Thứ 3",
+                date: "07/11",
+                time: ["19:00"]
+            },
+            {
+                dayofweek: "Thứ 4",
+                date: "08/11",
+                time: ["19:15"]
+            },
+            {
+                dayofweek: "Thứ 5",
+                date: "09/11",
+                time: ["18:30"]
+            }
+        ]
+
     },
     {
         id: 8,
@@ -58,6 +241,28 @@ const moviesData = [
         image: require('./img/film8.webp'),
         rating: 5.0,
         genre: 'T16',
+        showtime: [
+            {
+                dayofweek: "Hôm nay",
+                date: "06/11",
+                time: ["19:15"]
+            },
+            {
+                dayofweek: "Thứ 3",
+                date: "07/11",
+                time: ["19:00"]
+            },
+            {
+                dayofweek: "Thứ 4",
+                date: "08/11",
+                time: ["19:15"]
+            },
+            {
+                dayofweek: "Thứ 5",
+                date: "09/11",
+                time: ["18:30"]
+            }
+        ]
     },
     {
         id: 9,
@@ -65,6 +270,23 @@ const moviesData = [
         image: require('./img/film9.webp'),
         rating: 9.3,
         genre: 'T18',
+        showtime: [
+            {
+                dayofweek: "Hôm nay",
+                date: "06/11",
+                time: ["13:15"]
+            },
+            {
+                dayofweek: "Thứ 3",
+                date: "07/11",
+                time: ["13:15"]
+            },
+            {
+                dayofweek: "Thứ 4",
+                date: "08/11",
+                time: ["15:45"]
+            }
+        ]
     },
     {
         id: 10,
@@ -72,7 +294,25 @@ const moviesData = [
         image: require('./img/film10.webp'),
         rating: 7.9,
         genre: 'T18',
+        showtime: [
+            {
+                dayofweek: "Hôm nay",
+                date: "06/11",
+                time: ["13:15"]
+            },
+            {
+                dayofweek: "Thứ 3",
+                date: "07/11",
+                time: ["13:15"]
+            },
+            {
+                dayofweek: "Thứ 4",
+                date: "08/11",
+                time: ["15:45"]
+            }
+        ]
     },
+    
 ];
 const newMoviesData = [
     {
@@ -81,6 +321,18 @@ const newMoviesData = [
         image: require('./img/film1b.webp'),
         rating: 8.8,
         genre: 'T13',
+        showtime: [
+            {
+                dayofweek: "Thứ 7",
+                date: "11/11",
+                time: ["13:15"]
+            },
+            {
+                dayofweek: "Chủ nhật",
+                date: "12/11",
+                time: ["13:15"]
+            }
+        ]
     },
     {
         id: 2,
@@ -88,6 +340,18 @@ const newMoviesData = [
         image: require('./img/film2b.webp'),
         rating: 9.6,
         genre: 'T13',
+        showtime: [
+            {
+                dayofweek: "Thứ 7",
+                date: "11/11",
+                time: ["18:15"]
+            },
+            {
+                dayofweek: "Chủ nhật",
+                date: "12/11",
+                time: ["18:15"]
+            }
+        ]
     },
     {
         id: 3,
@@ -95,6 +359,13 @@ const newMoviesData = [
         image: require('./img/film3b.webp'),
         rating: 0,
         genre: 'T13',
+        showtime: [
+            {
+                dayofweek: "Thứ 7",
+                date: "11/11",
+                time: ["22:00"]
+            }
+        ]
     },
     {
         id: 4,
@@ -102,6 +373,20 @@ const newMoviesData = [
         image: require('./img/film4b.webp'),
         rating: 8.1,
         genre: 'T13',
+        showtime: [
+            {
+                dayofweek: "Thứ 7",
+                date: "11/11",
+                time: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00","17:00",
+                        "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"]
+            },
+            {
+                dayofweek: "Chủ nhật",
+                date: "12/11",
+                time: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00","17:00",
+                        "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"]
+            }
+        ]
     },
     {
         id: 5,
@@ -109,6 +394,18 @@ const newMoviesData = [
         image: require('./img/film5b.webp'),
         rating: 7.0,
         genre: 'T16',
+        showtime: [
+            {
+                dayofweek: "Thứ 7",
+                date: "11/11",
+                time: ["18:15"]
+            },
+            {
+                dayofweek: "Chủ nhật",
+                date: "12/11",
+                time: ["10:15", "14:15", "20:30", "22:45"]
+            }
+        ]
     },
     {
         id: 6,
@@ -116,6 +413,7 @@ const newMoviesData = [
         image: require('./img/film6b.webp'),
         rating: 0,
         genre: 'T18',
+        showtime: []
     },
     {
         id: 7,
@@ -123,6 +421,7 @@ const newMoviesData = [
         image: require('./img/film7b.webp'),
         rating: 5.5,
         genre: 'T18',
+        showtime: []
     },
     {
         id: 8,
@@ -130,10 +429,11 @@ const newMoviesData = [
         image: require('./img/film8b.webp'),
         rating: 6.6,
         genre: 'T18',
+        showtime: []
     }
 ];
 
-const Home = () => {
+const Home = ({navigation}) => {
     const [isShowingNow, setIsShowingNow] = useState(true);
     var [moviesToShow, setMoviesToShow] = useState(moviesData.slice(0, 6)); // Hiển thị 6 phim ban đầu
 
@@ -195,11 +495,11 @@ const Home = () => {
                 numColumns={2}
                 renderItem={({ item }) => (
                     <View style={styles.movieContainer}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{navigation.navigate("ChoseShowtime", {item})}}>
                             <Image source={item.image} style={styles.movieImage} />
                             <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{item.title}</Text>
                             <View style={styles.ratingContain}>
-                                    <Text style={styles.ratingText}> {item.rating} ⭐</Text>
+                                <Text style={styles.ratingText}> {item.rating} ⭐</Text>
                             </View>
 
                             <View style={styles.typeContain}>

@@ -11,8 +11,8 @@ import Icon from 'react-native-vector-icons/FontAwesome'; // Import thư viện 
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 
-// const LogIn = ({ navigation, route}) => {
-    const LogIn = ({ navigation}) => {
+const LogIn = ({ navigation, route}) => {
+    // const LogIn = ({ navigation}) => {
 
     var [email, setEmail] = useState('');
     var [password, setPassword] = useState('');
@@ -32,16 +32,16 @@ import { useNavigation, useRoute } from '@react-navigation/native';
         { email: 'tien', password: '123' },
         // Thêm nhiều người dùng khác ở đây
     ];
-    // const { users } = route.params;
+    const { users } = route.params;
     const handleLogin = () => {
         // Xác thực thông tin đăng nhập
-        user = fakeUsers.find((user) => user.email === email && user.password === password);
+        user = users.find((user) => user.email === email && user.password === password);
         if (user) {
             console.log(user);
             alert('Đăng nhập thành công!');
-            navigation.navigate('Account');
+            // navigation.navigate('Account');
 
-            // navigation.navigate('Account', {u:user});
+            navigation.navigate('Account', {u:user});
         } else {
             alert('Đăng nhập thất bại. Vui lòng kiểm tra thông tin đăng nhập.');
         }

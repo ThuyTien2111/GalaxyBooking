@@ -18,18 +18,17 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 // Import thư viện FontAwesome hoặc thư viện icon khác
-// function Account({ navigation, route}) {
-    function Account({ navigation}) {
-    // var {u}  = route.params;
-    var u={
-        fullName:'Thủy Tiên'
-    }
+function Account({ navigation, route}) {
+    // function Account({ navigation}) {
+    var {u}  = route.params;
+    // var u={
+    //     fullName:'Thủy Tiên'
+    // }
     console.log(u.fullName);
     var [star, setStar] = useState(0);
     var [money, setMoney] = useState(0);
 
     return (
-        // <ScrollView contentContainerStyle={styles.contain}>
         <ScrollView contentContainerStyle={styles.contain}>
             <View style={styles.header}>
                 <Text style={styles.headerText}>Tài khoản</Text>
