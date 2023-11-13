@@ -5,6 +5,8 @@ import Account from './Screen/Account';
 import News from './Screen/News';
 import Home from './Screen/Home';
 import ChoseShowtime from './Screen/ChoseShowtime';
+import ChosePosition from './Screen/ChosePosition';
+import Success from './Screen/Success';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -66,6 +68,8 @@ function App() {
           <Stack.Screen name="LogIn" component={LogIn} options={{ headerShown: false }} />
           <Stack.Screen name="Account" component={TabNavigate} options={{ headerShown: false }} />
           <Stack.Screen name="ChoseShowtime" component={ChoseShowtime} options={{ title: "Đặt vé" }} />
+          <Stack.Screen name="ChosePosition" component={ChosePosition} options={{ title: "Chọn chỗ ngồi" }} />
+          <Stack.Screen name="Success" component={Success} options={{ title: "Hoàn thành" }} />
 
           {/* Các màn hình khác nếu cần */}
         </Stack.Navigator>

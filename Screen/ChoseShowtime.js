@@ -13,6 +13,7 @@ export default function ChoseShowtime({ navigation }) {
     var showtime = item.showtime;
     var [ticket, setTicket] = useState({
         id: 0,
+        film:item.title,
         dayofweek: showtime.at(0).dayofweek,
         date: showtime.at(0).date,
         time: '',
@@ -24,6 +25,7 @@ export default function ChoseShowtime({ navigation }) {
     function choseDate(ngay, thu) {
         var newTicket = {
             id: ticket.id + 1,
+            film:item.title,
             dayofweek: thu,
             date: ngay,
             time: '',
@@ -41,8 +43,18 @@ export default function ChoseShowtime({ navigation }) {
         // Sử dụng setTicket để cập nhật trạng thái
         setTicket(newTicket);
     }
+    function isTicketComplete() {
+        // Check if all necessary information in the ticket is filled
+        return ticket.date !== '' && ticket.time !== '' && selectedCinema !== null;
+    }
     console.log(ticket)
-    return (
+    if (showtime.at(0).date == '') return (
+        <View style={styles.container} >
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={{ textAlign: 'center' }}>Phim này hiện chưa có lịch chiếu</Text>
+        </View>
+    )
+    else return (
         <View style={styles.container} >
             <Text style={styles.title}>{item.title}</Text>
             <View style={styles.buttonContainer}>
@@ -83,7 +95,7 @@ export default function ChoseShowtime({ navigation }) {
                         </Picker>
                     </View>
                     {/* lịch chiếu */}
-                    <View style={{ alignItems: 'center' }}>
+                    <View >
                         <FlatList
                             data={showtime}
                             horizontal
@@ -113,14 +125,63 @@ export default function ChoseShowtime({ navigation }) {
                         )}
                     />
                     <TouchableOpacity
-                        // style={[styles.button, isFormValid() ? styles.buttonEnabled : styles.buttonDisabled]}
-                        // onPress={handleRegister}
-                        // disabled={!isFormValid()}
-                        style={ styles.buttonEnabled }
+                        style={isTicketComplete() ? styles.buttonEnabled : styles.buttonDisabled}
+                        // onPress={}
+                        onPress={()=>{navigation.navigate("ChosePosition", {ticket})}}
+                        disabled={!isTicketComplete()}
                     >
-                        <Text style={styles.buttonText}>Xác nhận</Text>
+                        <Text style={styles.buttonConfirmText}>Xác nhận</Text>
                     </TouchableOpacity>
                 </View>
+            }
+            {content == "detail" &&
+                <View style={styles.news}>
+                    <View style={styles.view2}>
+                        <Text style={{ fontSize: 20, fontWeight: 700, marginBottom: 10 }}>Nội dung</Text>
+                        <Text style={{ fontWeight: 500, fontSize: 15 }}>
+                            {item.content}
+                        </Text>
+                    </View>
+                    <Text style={{ fontSize: 20, fontWeight: 700, marginBottom: 10 }}>Diễn viên</Text>
+                    <View style={styles.view3}>
+                        <FlatList
+                            data={item.actor}
+                            numColumns={4} // Đặt số cột trên mỗi hàng thành 5
+                            keyExtractor={(item, index) => index.toString()}
+                            renderItem={({ item }) => (
+                                <View >
+                                    <TouchableOpacity>
+                                        <View style={styles.view4}>
+                                            <View style={{ flexDirection: 'column', width: 70, marginRight: 20 }}>
+                                                <Image source={require('./img/actor.png')} style={styles.img}></Image>
+                                                <Text style={{ fontSize: 15, fontWeight: 500, textAlign: 'center' }}>{item}</Text>
+                                            </View>
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+                            )}
+                        />
+                    </View>
+                    <TouchableOpacity>
+                        <Text style={{ fontSize: 20, fontWeight: 700, marginBottom: 10 }}>Đạo diễn</Text>
+                        <View style={styles.view4}>
+                            <View style={{ flexDirection: 'column', width: 70 }}>
+                                <Image source={require('./img/director.png')} style={styles.img}></Image>
+                                <Text style={{ fontSize: 15, fontWeight: 500, textAlign: 'center' }}>{item.director}</Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+
+                </View>
+            }
+            {content == "new" &&
+                <TouchableOpacity onPress={() => Linking.openURL(item.new.link)}>
+                    <View style={{ paddingBottom: 20, flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 1, borderColor: 'gray', width: 360, alignSelf: 'center' }}>
+                        <Image source={item.new.img}
+                            style={styles.newImg} />
+                        <Text style={{ fontSize: 20, fontWeight: 500 }}>{item.new.title}</Text>
+                    </View>
+                </TouchableOpacity>
             }
 
         </View>
@@ -191,19 +252,86 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'black'
     },
-    buttonText: {
+    buttonConfirmText: {
         color: '#fff',
         fontSize: 16,
         fontWeight: 'bold',
-        textAlign:'center'
+        textAlign: 'center'
     },
     buttonEnabled: {
-        alignSelf:'center',
-        paddingVertical:12,
+        alignSelf: 'center',
+        paddingVertical: 12,
         backgroundColor: '#FFA500',
-        width:345,
-        borderRadius:10,
-        marginBottom:60
+        width: 345,
+        borderRadius: 10,
+        marginBottom: 60
     },
+    buttonDisabled: {
+        alignSelf: 'center',
+        paddingVertical: 12,
+        backgroundColor: 'gray',
+        width: 345,
+        borderRadius: 10,
+        marginBottom: 60
+    },
+    news: {
+        backgroundColor: '#fff',
+        marginHorizontal: 10,
+        marginTop: 10,
+    },
+    view1: {
+        top: 10,
+        flexDirection: 'row',
+        height: 50,
+        marginBottom: 20,
+
+    },
+    view2: {
+        // top: 50,
+        // justifyContent: 'center',
+        // alignContent: 'center',
+        // height: 180,
+        // width: '100%',
+        marginBottom: 20,
+
+    },
+    view3: {
+        // top: 80,
+        // justifyContent: 'center',
+        // alignContent: 'center',
+        // height: 100,
+        // width: '100%',
+        justifyContent: 'space-around',
+        flexDirection: 'row',
+        marginBottom: 20,
+
+    },
+    view4: {
+        paddingLeft: 5,
+        // top: 80,
+        // height: 100,
+        // width: '100%',
+        flexDirection: 'row',
+        marginBottom: 20,
+    },
+    img: {
+        width: 60,
+        height: 60,
+        borderRadius: 50,
+        alignSelf: 'center'
+    },
+    view5: {
+        width: '100%',
+        height: 200,
+        top: 100,
+        flexWrap: 'wrap',
+        justifyContentL: 'center',
+    },
+    newImg: {
+        width: 150,
+        height: 110,
+        marginRight: 10,
+        borderRadius: 10,
+    }
 
 })
