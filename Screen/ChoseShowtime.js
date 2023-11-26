@@ -2,6 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, FlatList, Linking, Picker } from 'react-native';
 import React, { useState } from 'react';
 import { useRoute } from '@react-navigation/native';
+import { setHistory, setTicketAdded} from '../Redux/Action';
+import { useDispatch, useSelector } from 'react-redux';
+
 export default function ChoseShowtime({ navigation }) {
     const route = useRoute();
     var { item } = route.params;
@@ -21,6 +24,8 @@ export default function ChoseShowtime({ navigation }) {
     })
     var defaultShowTime = showtime.find((time) => time.date == ticket.date)
     var time = defaultShowTime.time
+
+    
 
     function choseDate(ngay, thu) {
         var newTicket = {
@@ -47,7 +52,8 @@ export default function ChoseShowtime({ navigation }) {
         // Check if all necessary information in the ticket is filled
         return ticket.date !== '' && ticket.time !== '' && selectedCinema !== null;
     }
-    console.log(ticket)
+    // console.log(ticket)
+    
     if (showtime.at(0).date == '') return (
         <View style={styles.container} >
             <Text style={styles.title}>{item.title}</Text>
@@ -127,7 +133,7 @@ export default function ChoseShowtime({ navigation }) {
                     <TouchableOpacity
                         style={isTicketComplete() ? styles.buttonEnabled : styles.buttonDisabled}
                         // onPress={}
-                        onPress={()=>{navigation.navigate("ChosePosition", {ticket})}}
+                        onPress={()=>navigation.navigate("ChosePosition", {ticket})}
                         disabled={!isTicketComplete()}
                     >
                         <Text style={styles.buttonConfirmText}>Xác nhận</Text>

@@ -26,9 +26,9 @@ var SignIn = ({ navigation }) => {
 
     const options = [
         { label: 'Nam', value: 'Nam' },
-        { label: 'Nữ', value: 'Nu' },
+        { label: 'Nữ', value: 'Nữ' },
     ];
-
+    // console.log(gender)
     var isFormValid = () => {
         return (
             fullName.trim() !== '' &&
@@ -86,7 +86,6 @@ var SignIn = ({ navigation }) => {
             alert('Vui lòng điền đầy đủ thông tin.');
         }
     };
-
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <Image

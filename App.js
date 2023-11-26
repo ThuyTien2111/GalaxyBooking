@@ -7,6 +7,8 @@ import Home from './Screen/Home';
 import ChoseShowtime from './Screen/ChoseShowtime';
 import ChosePosition from './Screen/ChosePosition';
 import Success from './Screen/Success';
+import History from './Screen/History';
+import Detail from './Screen/Detail';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -14,6 +16,8 @@ import { Fontisto } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
+import Store from './Redux/Store'; //khong co ngoac nhon
+import { Provider } from 'react-redux';
 
 const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -57,6 +61,7 @@ function App() {
     )
   }
   return (
+    <Provider store={Store}>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
@@ -70,10 +75,14 @@ function App() {
           <Stack.Screen name="ChoseShowtime" component={ChoseShowtime} options={{ title: "Đặt vé" }} />
           <Stack.Screen name="ChosePosition" component={ChosePosition} options={{ title: "Chọn chỗ ngồi" }} />
           <Stack.Screen name="Success" component={Success} options={{ title: "Hoàn thành" }} />
+          <Stack.Screen name="History" component={History} options={{ title: "Lịch sử giao dịch" }} />
+          <Stack.Screen name="Detail" component={Detail} options={{ title: "Profile" }} />
 
           {/* Các màn hình khác nếu cần */}
         </Stack.Navigator>
       </NavigationContainer>
+    </Provider>
+
   );
 }
 

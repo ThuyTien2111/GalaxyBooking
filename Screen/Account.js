@@ -16,17 +16,26 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { setUser } from '../Redux/Action';
+import { useDispatch, useSelector } from 'react-redux';
 
-// Import thư viện FontAwesome hoặc thư viện icon khác
 function Account({ navigation, route}) {
     // function Account({ navigation}) {
     var {u}  = route.params;
     // var u={
     //     fullName:'Thủy Tiên'
     // }
-    console.log(u.fullName);
+    console.log(u);
     var [star, setStar] = useState(0);
     var [money, setMoney] = useState(0);
+
+    var dispatch=useDispatch()
+    var {user}=useSelector((state)=>state.ticketBooking)
+    function goDetailAccount(){
+        dispatch(setUser(u))
+        navigation.navigate('Detail')
+    }
+
 
     return (
         <ScrollView contentContainerStyle={styles.contain}>
@@ -59,13 +68,13 @@ function Account({ navigation, route}) {
                     </View>
                 </View>
                 <View style={styles.accountInfo}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>goDetailAccount()}>
                         <Text style={{ fontSize: 16 }}>
                             <AntDesign name="edit" size={24} color="black" style={{ marginRight: 10 }} />
                             Thông tin
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate("History")}>
                         <Text style={{ fontSize: 16 }}>
                             <MaterialIcons name="history" size={24} color="black" style={{ marginRight: 10 }} />
                             Giao dịch

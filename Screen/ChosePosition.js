@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { setHistory, setTicketAdded } from '../Redux/Action';
 
 const ChosePosition = ({ navigation }) => {
   const route = useRoute();
@@ -8,8 +10,16 @@ const ChosePosition = ({ navigation }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0); // State to hold the total price
   const cinemaName = ticket.cinema;
-  var [fullTicket, setFullTicket]=useState(ticket)
+  var [fullTicket, setFullTicket] = useState(ticket)
 
+  var dispatch = useDispatch()
+  var { ticketAdded, history } = useSelector((state) => state.ticketBooking)
+  function goNextScreen() {
+    dispatch(setTicketAdded(fullTicket))
+    dispatch(setHistory())
+    navigation.navigate('Success', { fullTicket })  
+  }
+  console.log(history)
   // Pricing logic
   const calculateSeatPrice = (seat) => {
     const isDouble = isDoubleSeat(seat);
@@ -52,8 +62,8 @@ const ChosePosition = ({ navigation }) => {
         ? styles.selectedDoubleSeat
         : styles.doubleSeat
       : isSelected
-      ? styles.selectedSeat
-      : styles.availableSeat;
+        ? styles.selectedSeat
+        : styles.availableSeat;
     const seatTextStyle = isSelected ? styles.selectedSeatText : styles.availableSeatText;
 
     return (
@@ -68,7 +78,8 @@ const ChosePosition = ({ navigation }) => {
       </TouchableOpacity>
     );
   };
-console.log(fullTicket)
+  // console.log(fullTicket)
+  
   return (
     <View style={styles.container}>
       <Text style={styles.cinemaName}>{cinemaName}</Text>
@@ -125,10 +136,7 @@ console.log(fullTicket)
 
       <TouchableOpacity
         style={styles.continueButton}
-        onPress={() => {
-          // Xử lý khi nhấn nút Tiếp tục
-           navigation.navigate('Success', { fullTicket });
-        }}
+        onPress={() => goNextScreen()}
       >
         <Text style={styles.continueButtonText}>Tiếp tục</Text>
       </TouchableOpacity>
